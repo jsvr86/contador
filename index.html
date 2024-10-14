@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Regresiva PacificREPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #005cbf);
+            color: white;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0px;
+        }
+        .countdown {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .countdown div {
+            text-align: center;
+        }
+        .countdown div span {
+            display: block;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .button-container a {
+            background-color: #005cbf;
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-container a:hover {
+            background-color: #007bff;
+        }
+        .message {
+
+            font-size: 400%;
+            font-weight: lighter;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="logo-02.svg" alt="" height="100px">
+    </div>
+    <br><br><br>
+    <div class="countdown" style="font-size: 24px;">
+        <div>
+            <span id="days">06</span>
+            DÍAS
+        </div>
+        <div>
+            <span id="hours">08</span>
+            HORAS
+        </div>
+        <div>
+            <span id="minutes">28</span>
+            MIN
+        </div>
+        <div>
+            <span id="seconds">36</span>
+            SEG
+        </div>
+    </div>
+    <div class="message">
+        Ya casi es hora
+        <p style="font-size: 24px;">Pronto podrás trabajar con la IA más poderosa jamás imaginada</p>
+        <p style="font-size: 18px">#conectabypacificREPS</p>
+    </div>
+    <div class="button-container">
+        <a href="https://www.pacificreps.com" target="_blank">Ir a PacificREPS</a>
+    </div>
+
+    <script>
+        const endDate = new Date('October 23, 2024 00:00:00').getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+
+        const countdown = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
